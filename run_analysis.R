@@ -56,7 +56,9 @@ mergedData <- as.data.frame(
     ))
 
 # And construct a tidy dataset consisting of the average values by subject and activity
-tidySet <- aggregate(x=mergedData[,3:81],by=list(mergedData$Subject, mergedData$Activity),FUN=mean)
+tidySet <- aggregate(x=mergedData[,3:81],
+                     by=list(mergedData[,1], mergedData[,2]),
+                     FUN=mean)
 
 # and assign the better column names
 names(tidySet)<-c("Subject", "Activity",meanAndStdFeatureNames)
